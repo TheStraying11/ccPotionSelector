@@ -7,7 +7,7 @@ host-client application used to select potion effects in `pylons:infusion_pylon`
 ### Install Instructions
 on the host computer at your base: `wget https://raw.githubusercontent.com/TheStraying11/ccPotionSelector/main/host.lua host.lua`
 
-on your pocket computer: `wget https://raw.githubusercontent.com/TheStraying11/ccPotionSelector/main/client.lua client.lua` !! not yet complete !!
+on your pocket computer: `wget run https://raw.githubusercontent.com/TheStraying11/ccPotionSelector/main/clientInstaller.lua` !! not yet complete !!
 
 responseCodes.lua, and all other dependencies (my own ccCrypt, and Anavrins' chacha) will auto install on first run except for `keys.lua` which you must create yourself
 
