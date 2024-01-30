@@ -118,16 +118,16 @@ end
 
 local commands = {
     getActiveEffects = function()
-        respond(200, table.concat(activeEffects(), ","))
+        respond(200, table.concat(activeEffects(), ";"))
     end,
     
     getInactiveEffects = function()
-        respond(200, table.concat(inactiveEffects(), ","))
+        respond(200, table.concat(inactiveEffects(), ";"))
     end,
     
     getAvailableEffects = function()
-        local active = table.concat(activeEffects(), ",")
-        local inactive = table.concat(inactiveEffects(), ",")
+        local active = table.concat(activeEffects(), ";")
+        local inactive = table.concat(inactiveEffects(), ";")
         respond(200, active..","..inactive)
     end,
     
@@ -171,12 +171,12 @@ local function recv()
     local r = {rednet.receive(protocol)}
     local status, cmd, args = pcall(
         function()
-            local msg = split(crypt:decrypt(r[2]))
+            local msg = split(crypt:decrypt(r[2]), ";")
             return msg[1], {table.unpack(msg, 2)}
         end
     )
     if not status then 
-        respond(400, "Invalid request: "..cmd.." "..table.concat(args, " "))
+        respond(400, "Invalid request: "..cmd.." "..table.concat(args, ";"))
         return 
     end
     if not commands[cmd] then 
